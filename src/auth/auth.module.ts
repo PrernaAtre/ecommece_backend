@@ -1,5 +1,5 @@
 import { Module } from '@nestjs/common';
-import { Authresolver } from './auth.resolver';
+import { AuthResolver } from './auth.resolver';
 import { AuthService } from './auth.service';
 import { MongooseModule } from '@nestjs/mongoose';
 import { UserSchema } from './user.schema';
@@ -27,7 +27,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
     }),
     MongooseModule.forFeature([{name : 'User', schema : UserSchema}])
   ],
-  providers: [AuthService,JwtStrategy,Authresolver, BcryptService],
+  providers: [AuthService,JwtStrategy,AuthResolver, BcryptService],
   exports : [JwtStrategy ]
 })
 export class AuthModule {}
