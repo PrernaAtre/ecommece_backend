@@ -54,7 +54,7 @@ export class AuthService {
             const { email, password } = userLoginInput;
             const user = await this.userModel.findOne({ email: email }, { _id: 1, firstname: 1, lastname: 1, email: 1, role: 1, password: 1, isSubcribed: 1 }).lean();
 
-            if (user && (await this.bcryptService.compare(password, user.password))) {
+            if (user && (await this.bcryptService.compare(password, user.password)) && user.role == userLoginInput.role) {
 
                 const token = this.jwtService.sign({ id: user._id });
                 const { password, ...userWithoutPassword } = user;
