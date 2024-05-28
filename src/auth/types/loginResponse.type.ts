@@ -1,8 +1,12 @@
 import { Field, ObjectType } from "@nestjs/graphql";
+import { ObjectId } from "mongoose";
 
 @ObjectType('loginResponse')
 export class LoginReponseType
 {
+    @Field(type => String)
+    _id : String
+
     @Field(type => String)
     firstname : string;
 

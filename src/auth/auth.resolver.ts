@@ -17,11 +17,11 @@ export class AuthResolver {
     }
 
     @Mutation(returns => UserType)
-    signUp(@Args('userSignupDto') userSignupDto : UserSignupInput)
+    signUp(@Args('userSignupInput') userSignupInput : UserSignupInput)
     {
         try
         {
-            return this.authService.createUser(userSignupDto);
+            return this.authService.createUser(userSignupInput);
         }
         catch(err)
         {

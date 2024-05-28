@@ -28,6 +28,12 @@ export class UserSignupInput
     @Field()
     @IsString()
     @IsNotEmpty()
+    @MinLength(7)
+    confirm_password : string;
+
+    @Field()
+    @IsString()
+    @IsNotEmpty()
     role : string;
 
     @Field({ nullable: true })

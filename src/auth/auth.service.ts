@@ -21,7 +21,7 @@ export class AuthService {
 
     async createUser(userSignupDto: UserSignupInput) {
         try {
-            const { firstname, lastname, email, password, role } = userSignupDto;
+            const { firstname, lastname, email, password,confirm_password, role } = userSignupDto;
             const checkEmail = await this.userModel.findOne({ email });
 
             if (checkEmail) {
@@ -67,7 +67,8 @@ export class AuthService {
                     role: userWithoutPassword.role,
                     profile_image: userWithoutPassword.profile_image,
                     customerId: userWithoutPassword.customerId,
-                    isSubcribed: userWithoutPassword.isSubcribed
+                    isSubcribed: userWithoutPassword.isSubcribed,
+                    _id : userWithoutPassword._id
                 }
             }
             throw new ServerError({
