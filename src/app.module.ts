@@ -6,6 +6,8 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { GraphQLModule } from '@nestjs/graphql';
 import { ApolloDriver } from '@nestjs/apollo';
+import { UserModule } from './user/user.module';
+import { CloudinaryModule } from './cloudinary/cloudinary.module';
 
 @Module({
   imports: [
@@ -24,7 +26,7 @@ import { ApolloDriver } from '@nestjs/apollo';
       driver : ApolloDriver,
       autoSchemaFile : true
     })
-    ,AuthModule],
+    ,AuthModule, UserModule, CloudinaryModule],
   controllers: [AppController],
   providers: [AppService],
 })

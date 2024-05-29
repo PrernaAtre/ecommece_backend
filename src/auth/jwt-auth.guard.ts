@@ -11,7 +11,11 @@ export class AuthGuard implements CanActivate {
     context: ExecutionContext,
 ):Promise<boolean> {
     const request = context.switchToHttp().getRequest();
+    console.log("request in authguard---", request);
+    
     const token = request.headers.authorization?.split(' ')[1];
+    console.log("token in authguard---", token);
+    
     if (!token) {
       throw new ServerError({code:401,message:"You are not authenticated"});
     }

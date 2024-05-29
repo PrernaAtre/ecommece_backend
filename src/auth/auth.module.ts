@@ -28,6 +28,6 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
     MongooseModule.forFeature([{name : 'User', schema : UserSchema}])
   ],
   providers: [AuthService,JwtStrategy,AuthResolver, BcryptService],
-  exports : [JwtStrategy ]
+  exports : [JwtStrategy, AuthService ]
 })
 export class AuthModule {}
